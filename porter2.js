@@ -43,7 +43,15 @@
     'generic':      'generic',
     'generically':  'generic',
     'generous':     'generous',
-    'generously':   'generous'
+    'generously':   'generous',
+    'inning':       'inning',
+    'outing':       'outing',
+    'canning':      'canning',
+    'herring':      'herring',
+    'earring':      'earring',
+    'proceed':      'proceed',
+    'exceed':       'exceed',
+    'succeed':      'succeed'
   };
 
   function r1(word) {
@@ -60,10 +68,7 @@
     return word.replace(/[\'‘’](s[\'‘’]?)?$/, '');
   }
 
-  function step1(word) {
-    var match;
-
-    // Step 1a
+  function step1a(word) {
     if (word.match(/sses$/)) {
       word = word.replace(/sses$/, 'ss');
     } else if (word.match(/ie[ds]$/)) {
@@ -75,8 +80,12 @@
         word = word.substr(0, word.length - 1);
       }
     }
+    return word;
+  }
 
-    // Step 1b
+  function step1b(word) {
+    var match;
+
     if (word.match(/eed(ly)?$/)) {
       if (word.substr(r1(word)).match(/eed(ly)?$/)) {
         word = word.replace(/eed(ly)?$/, '');
@@ -94,8 +103,10 @@
       }
     }
 
-    // Step 1c
+    return word;
+  }
 
+  function step1c(word) {
     if (word.length > 2 && VOWELS.indexOf(word[word.length - 2]) == -1) {
       word = word.replace(/[yY]$/, 'i');
     }
@@ -199,7 +210,12 @@
       .replace(VOWELS_BEFORE_Y, '$1Y');
 
     word = step0(word);
-    word = step1(word);
+    word = step1a(word);
+
+    if (EXCEPTIONS[word]) return EXCEPTIONS[word];
+
+    word = step1b(word);
+    word = step1c(word);
     word = step2(word);
     word = step3(word);
     word = step4(word);
@@ -221,5 +237,9 @@
       .join(' ');
   }
 
-  module.exports = { stem: stem, stemAll: stemAll };
+  module.exports = {
+    stem: stem,
+    stemAll: stemAll,
+    exceptions: EXCEPTIONS
+  };
 })(module);

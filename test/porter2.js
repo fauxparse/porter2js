@@ -82,7 +82,9 @@ EXAMPLES = [
   ['knocks', 'knock'],
   ['knopp', 'knopp'],
   ['knot', 'knot'],
-  ['knots', 'knot']
+  ['knots', 'knot'],
+  ['outings', 'outing'],
+  ['atlases', 'atlas'],
 ];
 
 describe('#stem', function() {
