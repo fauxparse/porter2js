@@ -1,0 +1,23 @@
+{
+  "name": "porter2js",
+  "version": "1.0.0",
+  "description": "JavaScript implementation of the Porter2 English stemming algorithm",
+  "main": "porter2.js",
+  "scripts": {
+    "test": "./node_modules/.bin/mocha --reporter spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/fauxparse/porter2js.git"
+  },
+  "author": "Matt Powell",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fauxparse/porter2js/issues"
+  },
+  "homepage": "https://github.com/fauxparse/porter2js#readme",
+  "devDependencies": {
+    "chai": "^3.4.1",
+    "mocha": "^2.3.4"
+  }
+}
