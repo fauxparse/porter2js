@@ -230,16 +230,6 @@
     return EXCEPTIONS[word] || doStem(word);
   }
 
-  function tokenise(text) {
-    var re = /[\w'‘’]+/, match, results = [];
-    var m, r = [];
-    while (m = re.exec(s)) {
-        m.shift();
-        r.push(m);
-    }
-    return r;
-  }
-
   function stemAll(text) {
     var tokenise = /[\w'‘’]+/g, match, output = '', space = '';
 

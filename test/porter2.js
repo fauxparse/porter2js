@@ -1,4 +1,4 @@
-var should = require('chai').should(),
+var expect = require('chai').expect,
     porter2 = require('../porter2');
 
 EXAMPLES = [
@@ -85,22 +85,23 @@ EXAMPLES = [
   ['knots', 'knot'],
   ['outings', 'outing'],
   ['atlases', 'atlas'],
+  ['murder', 'murder'],
+  ['murderer', 'murder'],
+  ['discover', 'discov'],
+  ['forcing', 'forc']
 ];
 
 describe('#stem', function() {
-  for (var i = 0; i < EXAMPLES.length; i++) {
-    global.example = EXAMPLES[i];
-
-    it('stems ' + global.example[0] + ' to ' + global.example[1], function() {
-      porter2.stem(global.example[0]).should.equal(global.example[1]);
-    });
-  }
+  it('stems all ' + EXAMPLES.length + ' example words correctly', function() {
+    for (var i = 0; i < EXAMPLES.length; i++) {
+      expect(porter2.stem(EXAMPLES[i][0])).to.equal(EXAMPLES[i][1]);
+    }
+  });
 });
 
 describe('#stemAll', function() {
   it('stems a full sentence of text', function() {
-    porter2
-      .stemAll('Actually, I knocked loudly, but apparently ineffectually')
-      .should.equal('actual i knock loud but appar ineffectu');
+    expect(porter2.stemAll('Actually, I knocked loudly, but apparently ineffectually'))
+      .to.equal('actual i knock loud but appar ineffectu');
   });
 });
