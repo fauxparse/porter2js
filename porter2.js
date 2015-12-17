@@ -250,9 +250,9 @@
     return output;
   }
 
-  module.exports = {
+  module.exports = this.Porter2 = {
     stem: stem,
     stemAll: stemAll,
     exceptions: EXCEPTIONS
   };
-})(module);
+})(typeof module !== 'undefined' && module !== null ? module : {});
