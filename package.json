@@ -1,6 +1,6 @@
 {
   "name": "porter2js",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "JavaScript implementation of the Porter2 English stemming algorithm",
   "main": "porter2.js",
   "scripts": {
